@@ -57,7 +57,7 @@ public class EarthQuakeClient
     	ArrayList<QuakeEntry> list = getQuakeData();
     	System.out.println("read data for "+list.size()+" quakes");
     	
-    	ArrayList<QuakeEntry> matches = filterByPhrase(list, "any", "Creek");
+    	ArrayList<QuakeEntry> matches = filterByPhrase(list, "any", "Can");
     	
     	
     	for (QuakeEntry qe : matches) {
@@ -83,8 +83,8 @@ public class EarthQuakeClient
     
     public void quakesOfDepth() {
     	
-    	double min = -8000;
-    	double max = -5000;
+    	double min = -4000.0;
+    	double max =  -2000.0;
     	
     	ArrayList<QuakeEntry> quakeData = getQuakeData();
     	
@@ -193,10 +193,10 @@ public class EarthQuakeClient
     public static void main(String[] args) {
     	EarthQuakeClient client = new EarthQuakeClient();
     	
-//    	client.bigQuakes();
+    	client.bigQuakes();
 //    	client.closeToMe();
 //    	client.quakesOfDepth();
-    	client.quakesByPhrase();
+//    	client.quakesByPhrase();
     	// Filtered by magnitude
 //    	ArrayList<QuakeEntry> filtered = client.filterByMagnitude(quakeData, 5.0);
 //    	

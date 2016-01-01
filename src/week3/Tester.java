@@ -1,0 +1,56 @@
+package week3;
+
+import java.util.ArrayList;
+
+import edu.duke.FileResource;
+
+public class Tester {
+	
+	private String getText() {
+		FileResource fr = new FileResource("data/markov/confucius.txt");
+		String st = fr.asString();
+		st = st.replace('\n', ' ');
+		return st;
+	}
+	@SuppressWarnings("unused")
+	private void testGetFollows() {
+		
+		MarkovOne markov = new MarkovOne();
+		String st = "this is a test yes this is a test.";
+		System.out.println(st);
+		markov.setRandom(150);
+		markov.setTraining(st);
+		
+		for (int i=0; i<st.length(); i++) {
+			
+			String key = st.substring(i, i+1);
+			ArrayList<String> follows = markov.getFollows(key);
+			System.out.printf("%s\t%s\n", key, follows);
+			
+		}
+		
+	}
+	
+	private void testGetFollowsWithFile() {
+		
+		MarkovOne markov = new MarkovOne();
+		
+		String st = getText();
+		
+		System.out.println(st);
+		markov.setRandom(150);
+		markov.setTraining(st);
+		int tcnt = markov.getFollows("t").size();
+		System.out.println("Size: " + tcnt);
+		
+		
+
+	}
+	
+	public static void main(String[] args) {
+	
+		Tester t = new Tester();
+//		t.testGetFollows();
+		t.testGetFollowsWithFile();
+	}
+}

@@ -7,23 +7,24 @@ import edu.duke.FileResource;
 public class Tester {
 	
 	private String getText() {
-		FileResource fr = new FileResource("data/markov/confucius.txt");
+		FileResource fr = new FileResource("data/markov/melville.txt");
 		String st = fr.asString();
 		st = st.replace('\n', ' ');
 		return st;
 	}
 	@SuppressWarnings("unused")
-	private void testGetFollows() {
+	private void testGetFollows(int order) {
 		
-		MarkovOne markov = new MarkovOne();
+		MarkovModel markov = new MarkovModel(order);
+		System.out.printf("Markov model order: %d\n", order);
 		String st = "this is a test yes this is a test.";
 		System.out.println(st);
 		markov.setRandom(150);
 		markov.setTraining(st);
 		
-		for (int i=0; i<st.length(); i++) {
+		for (int i=0; i<st.length()-order; i++) {
 			
-			String key = st.substring(i, i+1);
+			String key = st.substring(i, i+order);
 			ArrayList<String> follows = markov.getFollows(key);
 			System.out.printf("%s\t%s\n", key, follows);
 			
@@ -40,7 +41,7 @@ public class Tester {
 		System.out.println(st);
 		markov.setRandom(150);
 		markov.setTraining(st);
-		int tcnt = markov.getFollows("t").size();
+		int tcnt = markov.getFollows("th").size();
 		System.out.println("Size: " + tcnt);
 		
 		
@@ -50,7 +51,7 @@ public class Tester {
 	public static void main(String[] args) {
 	
 		Tester t = new Tester();
-//		t.testGetFollows();
+//		t.testGetFollows(4);
 		t.testGetFollowsWithFile();
 	}
 }

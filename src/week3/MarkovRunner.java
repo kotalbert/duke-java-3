@@ -9,10 +9,10 @@ package week3;
 import edu.duke.*;
 
 public class MarkovRunner {
-	
 
 	/**
 	 * Get sample text from file as a string
+	 * 
 	 * @return
 	 */
 	private String getText() {
@@ -21,36 +21,57 @@ public class MarkovRunner {
 		st = st.replace('\n', ' ');
 		return st;
 	}
-	
-    public void runMarkovZero() {
 
-    	String st = getText();
+	public void runMarkovZero() {
+
+		String st = getText();
 		MarkovZero markov = new MarkovZero();
-		markov.setRandom(42);
+		markov.setRandom(88);
 		markov.setTraining(st);
-		for(int k=0; k < 3; k++){
+		for (int k = 0; k < 3; k++) {
 			String text = markov.getRandomText(500);
 			printOut(text);
 		}
 	}
-	
-    public void runMarkovOne() {
-    	String st = getText();
-		MarkovOne markov = new MarkovOne();
-		markov.setRandom(42);
+
+	public void runMarkovOne() {
+		String st = getText();
+		MarkovModel markov = new MarkovModel(1);
+		markov.setRandom(273);
 		markov.setTraining(st);
-		for(int k=0; k < 3; k++){
+	
+		String text = markov.getRandomText(500);
+		printOut(text);
+	
+	}
+
+	public void runMarkovFour() {
+		String st = getText();
+		MarkovModel markov = new MarkovModel(4);
+		markov.setRandom(25);
+		markov.setTraining(st);
+		for (int k = 0; k < 3; k++) {
 			String text = markov.getRandomText(500);
 			printOut(text);
 		}
-    }
-    
-	private void printOut(String s){
+	}
+
+	public void runMarkovSix() {
+		String st = getText();
+		MarkovModel markov = new MarkovModel(6);
+		markov.setRandom(38);
+		markov.setTraining(st);
+		String text = markov.getRandomText(500);
+		printOut(text);
+
+	}
+
+	private void printOut(String s) {
 		String[] words = s.split("\\s+");
 		int psize = 0;
 		System.out.println("----------------------------------");
-		for(int k=0; k < words.length; k++){
-			System.out.print(words[k]+ " ");
+		for (int k = 0; k < words.length; k++) {
+			System.out.print(words[k] + " ");
 			psize += words[k].length() + 1;
 			if (psize > 60) {
 				System.out.println();
@@ -59,10 +80,13 @@ public class MarkovRunner {
 		}
 		System.out.println("\n----------------------------------");
 	}
-	
+
 	public static void main(String[] args) {
 		MarkovRunner mr = new MarkovRunner();
-		mr.runMarkovOne();
+//		mr.runMarkovZero();
+//		 mr.runMarkovOne();
+		mr.runMarkovFour();
+//		mr.runMarkovSix();
 	}
-	
+
 }

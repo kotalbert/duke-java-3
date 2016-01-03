@@ -25,17 +25,24 @@ public class MarkovRunnerWithInterface {
 		st = st.replace('\n', ' ');
 		int size = 200;
 		int seed = 10;
-        MarkovZero mz = new MarkovZero();
-        runModel(mz, st, size, seed);
-    
-        MarkovOne mOne = new MarkovOne();
-        runModel(mOne, st, size, seed);
-        
-        MarkovModel mThree = new MarkovModel(3);
-        runModel(mThree, st, size, seed);
-        
-        MarkovModel mFour = new MarkovModel(4);
-        runModel(mFour, st, size, seed);
+//        MarkovZero mz = new MarkovZero();
+//        runModel(mz, st, size, seed);
+//    
+//        MarkovOne mOne = new MarkovOne();
+//        runModel(mOne, st, size, seed);
+//        
+//        MarkovModel mThree = new MarkovModel(3);
+//        runModel(mThree, st, size, seed);
+//        
+//        MarkovModel mFour = new MarkovModel(4);
+//        runModel(mFour, st, size, seed);
+		
+		MarkovModel mFour = new MarkovModel(4);
+		EfficientMarkovModel mFourEfficient = new EfficientMarkovModel(4);
+		
+		runModel(mFour, st, size, seed);
+		runModel(mFourEfficient, st, size, seed);
+		
 
     }
 

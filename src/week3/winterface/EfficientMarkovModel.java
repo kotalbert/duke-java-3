@@ -54,7 +54,7 @@ public class EfficientMarkovModel extends AbstractMarkovModel {
 				mapSize(), 
 				longestFollowsSize());
 		for (String key : map.keySet()) {
-			System.out.printf("Key:\t%s\tvalues: ", key);
+			System.out.printf("Key:\t[%s]\tvalues: ", key);
 			System.out.println(map.get(key));
 		}
 		

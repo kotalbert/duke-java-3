@@ -144,7 +144,8 @@ public class TestEfficientMarkov {
 	
 	public static void main(String[] args) {
 		TestEfficientMarkov t = new TestEfficientMarkov();
-		t.compareModels();
+//		t.compareModels();
+		t.testHashMap();
 
 	}
 

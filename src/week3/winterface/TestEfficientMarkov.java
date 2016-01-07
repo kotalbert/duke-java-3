@@ -80,7 +80,7 @@ public class TestEfficientMarkov {
 		String st = fr.asString();
 		st = st.replace('\n', ' ');
 		
-		EfficientMarkovModel markov = new EfficientMarkovModel(4);
+		EfficientMarkovModel markov = new EfficientMarkovModel(2);
 		markov.setRandom(25);
 		runModel(markov, st, 200);
 	}
@@ -96,6 +96,7 @@ public class TestEfficientMarkov {
 	}
 	
 	public void compareModels() {
+		System.out.println("Running model comparison...");
 		
 		int order = 6;
 		int seed = 120;
@@ -104,25 +105,24 @@ public class TestEfficientMarkov {
 		
 		MarkovModel basic = new MarkovModel(order);
 		EfficientMarkovModel efficient = new EfficientMarkovModel(order);
-		
 		FileResource fr = new FileResource();
 		String st = fr.asString();
 		st = st.replace('\n', ' ');
 		
 		basic.setRandom(seed);
-		basic.setTraining(st);
-		efficient.setRandom(seed);
-		efficient.setTraining(st);
 		
-		System.out.println("Running model comparison...");
+		efficient.setRandom(seed);
+		
 		
 		// Test basic model
 		long basicTime = System.nanoTime();
+		basic.setTraining(st);
 		runModelTimes(basic, times, size);
 		basicTime = System.nanoTime() - basicTime;
 		
 		// Test efficient model
 		long effTime = System.nanoTime();
+		efficient.setTraining(st);
 		runModelTimes(efficient, times, size);
 		effTime = System.nanoTime() - effTime;
 		
@@ -130,9 +130,9 @@ public class TestEfficientMarkov {
 		
 		
 		System.out.printf("Basic model, time:\t%s\n"
-				, timeFormat.format(basicTime/ 1000000000));
+				, timeFormat.format(basicTime/ 1000000000.0));
 		System.out.printf("Efficient model, time:\t%s\n"
-				, timeFormat.format(effTime/ 1000000000));
+				, timeFormat.format(effTime/ 1000000000.0));
 		
 	}
 	
@@ -144,8 +144,9 @@ public class TestEfficientMarkov {
 	
 	public static void main(String[] args) {
 		TestEfficientMarkov t = new TestEfficientMarkov();
-//		t.compareModels();
-		t.testHashMap();
+		t.compareModels();
+//		t.testHashMap();
+//		t.runMarkovFour();
 
 	}
 

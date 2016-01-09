@@ -7,7 +7,7 @@ import edu.duke.FileResource;
 public class Tester {
 	
 	private String getText() {
-		FileResource fr = new FileResource("data/markov/melville.txt");
+		FileResource fr = new FileResource("data/markov/confucius.txt");
 		String st = fr.asString();
 		st = st.replace('\n', ' ');
 		return st;
@@ -34,14 +34,14 @@ public class Tester {
 	
 	private void testGetFollowsWithFile() {
 		
-		MarkovOne markov = new MarkovOne();
+		MarkovModel markov = new MarkovModel(1);
 		
 		String st = getText();
 		
 		System.out.println(st);
 		markov.setRandom(150);
 		markov.setTraining(st);
-		int tcnt = markov.getFollows("th").size();
+		int tcnt = markov.getFollows("o").size();
 		System.out.println("Size: " + tcnt);
 		
 		

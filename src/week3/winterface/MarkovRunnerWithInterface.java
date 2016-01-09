@@ -6,7 +6,8 @@ package week3.winterface;
  * @version 1.0
  */
 
-import edu.duke.*; 
+import edu.duke.*;
+import week3.MarkovZero; 
 
 public class MarkovRunnerWithInterface {
     public void runModel(IMarkovModel markov, String text, int size, int seed) {
@@ -46,6 +47,7 @@ public class MarkovRunnerWithInterface {
 
     }
 
+    
 	private void printOut(String s){
 		String[] words = s.split("\\s+");
 		int psize = 0;

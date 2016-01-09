@@ -1,14 +1,7 @@
 package week3.ngram;
 
-
-/**
- * Write a description of class MarkovRunner here.
- * 
- * @author (your name) 
- * @version (a version number or a date)
- */
-
 import edu.duke.*;
+import week3.MarkovZero;
 
 public class MarkovRunner {
     public void runModel(IMarkovModel markov, String text, int size){ 
@@ -34,18 +27,21 @@ public class MarkovRunner {
         FileResource fr = new FileResource(); 
         String st = fr.asString(); 
         st = st.replace('\n', ' '); 
-        MarkovWordOne markovWord = new MarkovWordOne(); 
-        runModel(markovWord, st, 120,139); 
+        MarkovWord markov = new MarkovWord(3);
+        runModel(markov, st, 200, 643); 
     } 
 
-    public void runMarkovWordTwo() { 
+    
+    public void runEffMarkov() { 
         FileResource fr = new FileResource(); 
         String st = fr.asString(); 
         st = st.replace('\n', ' '); 
-        MarkovWordTwo markovWord = new MarkovWordTwo(); 
-        runModel(markovWord, st, 120,832); 
+//    	String st = "this is a test yes this is really a test yes a test this is wow";
+        EfficientMarkovWord markov = new EfficientMarkovWord(2);
+        runModel(markov, st, 50, 42); 
+        markov.printHashMapInfo();
     } 
-    
+
     private void printOut(String s){
         String[] words = s.split("\\s+");
         int psize = 0;
@@ -60,11 +56,12 @@ public class MarkovRunner {
         } 
         System.out.println("\n----------------------------------");
     } 
-    
+
     public static void main(String[] args) {
     	MarkovRunner mr = new MarkovRunner();
-//    	mr.runMarkov();
-    	mr.runMarkovWordTwo();
-	}
 
+    	mr.runEffMarkov();
+	}
+    
+    
 }

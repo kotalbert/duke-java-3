@@ -31,6 +31,7 @@ public class EfficientMarkovModel extends AbstractMarkovModel {
 	public void setTraining(String s) {
 		super.setTraining(s);
 		buildMap();
+		printHashMapInfo();
 	}
 
 	/**
@@ -90,10 +91,10 @@ public class EfficientMarkovModel extends AbstractMarkovModel {
 
 	public void printHashMapInfo() {
 		System.out.printf("Map size:\t%d\nMax size:\t%d\n", mapSize(), longestFollowsSize());
-		for (String key : map.keySet()) {
-			System.out.printf("Key:\t[%s]\tvalues: ", key);
-			System.out.println(map.get(key));
-		}
+//		for (String key : map.keySet()) {
+//			System.out.printf("Key:\t[%s]\tvalues: ", key);
+//			System.out.println(map.get(key));
+//		}
 
 	}
 

@@ -90,8 +90,8 @@ public class TestEfficientMarkov {
 		String st = fr.asString();
 		st = st.replace('\n', ' ');
 		
-		EfficientMarkovModel markov = new EfficientMarkovModel(6);
-		markov.setRandom(38);
+		EfficientMarkovModel markov = new EfficientMarkovModel(5);
+		markov.setRandom(531);
 		runModel(markov, st, 200);
 	}
 	
@@ -144,9 +144,9 @@ public class TestEfficientMarkov {
 	
 	public static void main(String[] args) {
 		TestEfficientMarkov t = new TestEfficientMarkov();
-		t.compareModels();
+//		t.compareModels();
 //		t.testHashMap();
-//		t.runMarkovFour();
+		t.runMarkovSix();
 
 	}
 

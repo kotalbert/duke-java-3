@@ -22,7 +22,12 @@ public abstract class AMarkovWord implements IMarkovModel{
 		myText = text.split("\\s+");
 	}
     
-
+    protected void append(StringBuilder sb, String word) {
+    	sb.append(word);
+    	sb.append(" ");
+    }
+    
+    public abstract String getRandomText(int numChars);
     
 	
 	

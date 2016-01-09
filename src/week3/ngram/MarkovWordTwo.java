@@ -9,7 +9,6 @@ public class MarkovWordTwo extends AMarkovWord {
 		
 	}
 	
-    
     /**
      * Return first location of target1, where target 2 is following.
      * @param words
@@ -58,10 +57,6 @@ public class MarkovWordTwo extends AMarkovWord {
     	}
     }
     
-    private void append(StringBuilder sb, String word) {
-    	sb.append(word);
-    	sb.append(" ");
-    }
 
 	@Override
 	public String getRandomText(int numWords){

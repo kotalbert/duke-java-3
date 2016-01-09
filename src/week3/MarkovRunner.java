@@ -16,7 +16,7 @@ public class MarkovRunner {
 	 * @return
 	 */
 	private String getText() {
-		FileResource fr = new FileResource("data/markov/confucius.txt");
+		FileResource fr = new FileResource("data/markov/romeo.txt");
 		String st = fr.asString();
 		st = st.replace('\n', ' ');
 		return st;
@@ -26,7 +26,7 @@ public class MarkovRunner {
 
 		String st = getText();
 		MarkovZero markov = new MarkovZero();
-		markov.setRandom(88);
+		markov.setRandom(1024);
 		markov.setTraining(st);
 		for (int k = 0; k < 3; k++) {
 			String text = markov.getRandomText(500);
@@ -37,7 +37,7 @@ public class MarkovRunner {
 	public void runMarkovOne() {
 		String st = getText();
 		MarkovModel markov = new MarkovModel(1);
-		markov.setRandom(273);
+		markov.setRandom(365);
 		markov.setTraining(st);
 	
 		String text = markov.getRandomText(500);
@@ -48,7 +48,7 @@ public class MarkovRunner {
 	public void runMarkovFour() {
 		String st = getText();
 		MarkovModel markov = new MarkovModel(4);
-		markov.setRandom(25);
+		markov.setRandom(715);
 		markov.setTraining(st);
 		for (int k = 0; k < 3; k++) {
 			String text = markov.getRandomText(500);
@@ -58,8 +58,8 @@ public class MarkovRunner {
 
 	public void runMarkovSix() {
 		String st = getText();
-		MarkovModel markov = new MarkovModel(6);
-		markov.setRandom(38);
+		MarkovModel markov = new MarkovModel(7);
+		markov.setRandom(953);
 		markov.setTraining(st);
 		String text = markov.getRandomText(500);
 		printOut(text);
@@ -85,8 +85,8 @@ public class MarkovRunner {
 		MarkovRunner mr = new MarkovRunner();
 //		mr.runMarkovZero();
 //		 mr.runMarkovOne();
-		mr.runMarkovFour();
-//		mr.runMarkovSix();
+//		mr.runMarkovFour();
+		mr.runMarkovSix();
 	}
 
 }

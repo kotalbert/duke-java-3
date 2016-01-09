@@ -28,6 +28,29 @@ public class MarkovWordOne extends AMarkovWord {
 		System.out.println("Index of 'test':\t" + indexOf(text, "test", 5));
 	}
 	
+    private int indexOf(String[] words, String target, int start) {
+    	
+    	for (int i=start; i<words.length; i++) {
+    	
+    		if (words[i].equals(target)) return i;
+    	}
+    	
+    	return -1;
+    }
+	
+    private ArrayList<String> getFollows(String key) {
+    	
+    	ArrayList<String> follows = new ArrayList<String>();
+    	int index = indexOf(myText, key, 0);
+    	
+    	while (index!=-1) {
+    		follows.add(myText[index+1]);
+    		index = indexOf(myText, key, index+1);
+    	}
+    	
+    	return follows;
+    }
+	
 	public String getRandomText(int numWords){
 		StringBuilder sb = new StringBuilder();
 		int index = myRandom.nextInt(myText.length-1);  // random word to start with
@@ -39,6 +62,7 @@ public class MarkovWordOne extends AMarkovWord {
 		    if (follows.size() == 0) {
 		        break;
 		    }
+//		    System.out.println(key+":\t"+follows);
 			index = myRandom.nextInt(follows.size());
 			String next = follows.get(index);
 			sb.append(next);
